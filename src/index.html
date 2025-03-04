@@ -295,7 +295,7 @@
 
     const projection = d3.geoMercator()
         .scale(Math.min(width / 1920, height / 1080) * 180)
-        .translate([width / 2.4, height / 1.5]);
+        .translate([width / 4.4, height / 12.5]);
         
     const path = d3.geoPath().projection(projection);
     const attackFeed = document.getElementById("attack-feed");
@@ -303,11 +303,6 @@
     // Add glow filter definition
     const defs = svg.append("defs");
     const filter = defs.append("filter")
-        .attr("id", "glow")
-        .attr("x", "-50%")
-        .attr("y", "-50%")
-        .attr("width", "200%")
-        .attr("height", "200%");
 
     filter.append("feGaussianBlur")
         .attr("stdDeviation", "3")
@@ -342,7 +337,6 @@
             .data(countries)
             .enter().append("path")
             .attr("d", path)
-            .attr("class", "country")
             .attr("data-country", d => countryMap[d.id]?.iso?.toUpperCase())
             .on("mouseover", function(event, d) {
                 d3.select(this).style('cursor', 'pointer');
@@ -438,7 +432,7 @@
 
         // Format the hours, minutes, and seconds with leading zeros if necessary
         hours = hours < 10 ? '0' + hours : hours;
-        minutes = minutes < 10 ? '0' + minutes : minutes;
+        minutes = minutes < 101 ? '0' + minutes : minutes;
         seconds = seconds < 10 ? '0' + seconds : seconds;
 
         // Return the formatted time
