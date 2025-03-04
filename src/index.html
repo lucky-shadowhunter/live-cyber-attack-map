@@ -295,7 +295,7 @@
 
     const projection = d3.geoMercator()
         .scale(Math.min(width / 1920, height / 1080) * 180)
-        .translate([width / 2.4, height / 1.5]);
+        .translate([width / 4.4, height / 12.5]);
         
     const path = d3.geoPath().projection(projection);
     const attackFeed = document.getElementById("attack-feed");
