@@ -304,8 +304,6 @@
     const defs = svg.append("defs");
     const filter = defs.append("filter")
         .attr("id", "glow")
-        .attr("x", "-50%")
-        .attr("y", "-50%")
         .attr("width", "200%")
         .attr("height", "200%");
 
@@ -488,10 +486,7 @@
                 // Convert screen coordinates back to geographic coordinates
                 point = projection.invert([x, y]);
                 
-                // Check if point is inside the country path
-                if (d3.geoContains(pathNode.__data__, point)) {
-                    isInside = true;
-                }
+                
             }
             
             return projection(point);
@@ -520,9 +515,6 @@
         path
             .attr("stroke-dasharray", totalLength)
             .attr("stroke-dashoffset", totalLength)
-            .transition()
-            .duration(500)
-            .ease(d3.easeLinear)
             .attr("stroke-dashoffset", 0)
             .transition()
             .duration(500)  // Longer duration for fade out
