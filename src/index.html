@@ -347,7 +347,7 @@
         .attr("height", height)
 
     const projection = d3.geoMercator()
-        .scale(Math.min(width / 1920, height / 1080) * 180)
+        .scale(Math.min(width / 1910, height / 1080) * 180)
         .translate([width / 2.4, height / 1.5]);
         
     const path = d3.geoPath().projection(projection);
