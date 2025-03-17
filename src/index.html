@@ -6,49 +6,16 @@
     <title>Live Cyber Threat Map</title>
     <link rel="stylesheet" href="/style.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- Nunito Sans Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="https://sensedefence-cdn-public.s3.eu-west-1.amazonaws.com/static/images/fav.png">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- D3.js and TopoJSON for Map Rendering -->
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://d3js.org/topojson.v1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+    
 </head>
-<body >
-
-<nav>
-    <div class="container mx-auto px-4">
-        <div class="flex justify-between items-center py-4">
-            <!-- Logo -->
-            <a href="https://www.sensedefence.com" class="flex items-center">
-                <img src="https://sensedefence-cdn-public.s3.eu-west-1.amazonaws.com/static/live-attack-map.svg" alt="Sense Defence" class="h-10 w-auto mr-3" style=" height: 3rem; ">
-            </a>
-
-            <!-- Menu -->
-            <div class="hidden md:flex space-x-8">
-                <a href="https://www.sensedefence.com/" class="text-[#061536] hover:text-[#4285f4] transition duration-200">Home</a>
-                <a href="https://www.sensedefence.com/technology-overview/" class="text-[#061536] hover:text-[#4285f4] transition duration-200">Technology Overview</a>
-                <a href="https://www.sensedefence.com/enterprise/" class="text-[#061536] hover:text-[#4285f4] transition duration-200">Enterprise</a>
-                <a href="https://resources.sensedefence.com/articles" class="text-[#061536] hover:text-[#4285f4] transition duration-200">Blog</a>
-                <a href="https://app.sensedefence.com" class="text-[#061536] hover:text-[#4285f4] transition duration-200">Dashboard</a>
-            </div>
-
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-
-</nav>
-
-
+<body>
     <!-- page preloader -->
     <div id="loader-wrapper">
         <div id="loader"></div>
@@ -57,86 +24,26 @@
     </div>
     <!-- <p class="text-gray-400 mb-2 bg-transparent">Tracking real-time global cyber attacks</p> -->
     <!-- Map Container -->
-    <div id="map-container">
-        <div id="attack-feed" ></div>
-        <div class="attack-panel">
-            <div class="section-title">Top Attack Origins</div>
-            <ul class="attack-list origin-list">
-                <li class="attack-item">
-                    <span class="attack-dot origin-dot"></span>
-                    France
-                </li>
-                <li class="attack-item">
-                    <span class="attack-dot origin-dot"></span>
-                    United States
-                </li>
-                <li class="attack-item">
-                    <span class="attack-dot origin-dot"></span>
-                    United Kingdom
-                </li>
-                <li class="attack-item">
-                    <span class="attack-dot origin-dot"></span>
-                    India
-                </li>
-                <li class="attack-item">
-                    <span class="attack-dot origin-dot"></span>
-                    Japan
-                </li>
-            </ul>
-
-            <div class="divider"></div>
-
-            <div class="section-title">Top Attack Destinations</div>
-            <ul class="attack-list target-list">
-                <li class="attack-item">
-                    <span class="attack-dot destination-dot"></span>
-                    France
-                </li>
-                <li class="attack-item">
-                    <span class="attack-dot destination-dot"></span>
-                    United States
-                </li>
-                <li class="attack-item">
-                    <span class="attack-dot destination-dot"></span>
-                    United Kingdom
-                </li>
-                <li class="attack-item">
-                    <span class="attack-dot destination-dot"></span>
-                    India
-                </li>
-                <li class="attack-item">
-                    <span class="attack-dot destination-dot"></span>
-                    Japan
-                </li>
-            </ul>
-
-            <div class="divider"></div>
-
-            <div class="section-title">Top Attack Industry</div>
-            <ul class="attack-list industry-list">
-                <li class="attack-item">
-                    <span class="attack-dot industry-dot"></span>
-                    Automotive
-                </li>
-                <li class="attack-item">
-                    <span class="attack-dot industry-dot"></span>
-                    Financial Services
-                </li>
-                <li class="attack-item">
-                    <span class="attack-dot industry-dot"></span>
-                    Banking
-                </li>
-                <li class="attack-item">
-                    <span class="attack-dot industry-dot"></span>
-                    Retail
-                </li>
-                <li class="attack-item">
-                    <span class="attack-dot industry-dot"></span>
-                    Telecom
-                </li>
-            </ul>
-        </div>
+    <div id="map-container"></div>
+    <div id="attack-feed"></div>
+    <div class="attack-panel">
+        <div class="section-title">Top Attack Origins</div>
+        <ul class="attack-list origin-list">
+        </ul>
+    
+        <div class="divider"></div>
+    
+        <div class="section-title">Top Attack Destinations</div>
+        <ul class="attack-list target-list">
+        </ul>
+    
+        <div class="divider"></div>
+    
+        <div class="section-title">Top Attack Industry</div>
+        <ul class="attack-list industry-list">
+        </ul>
     </div>
+
 
     <div class="stats-container">
         <!-- IP Version Box -->
@@ -162,7 +69,7 @@
                 <div class="progress-fill orange-fill post_fill" style="width: 35%"></div>
             </div>
         </div>
-
+    
         <!-- HTTP Methods Box -->
         <div class="stat-box">
             <div class="stat-row">
@@ -186,7 +93,7 @@
                 <div class="progress-fill orange-fill ipv6_fill" style="width: 1%"></div>
             </div>
         </div>
-
+    
         <!-- Attack Types Box -->
         <div class="stat-box">
             <div class="stat-row">
@@ -236,9 +143,20 @@
     </div>
 
     <footer>
+        <div class="banner-section">
+            <h1 class="banner-title">
+                Built to Mitigate the<br>
+                Enormous Attacks
+            </h1>
+            <p class="banner-description">
+                Leverage our advanced technology for robust, real-time protection against web threats.
+            </p>
+            <a href="#" class="get-started-button">
+                Get Started Now
+            </a>
+        </div>
 
-
-        <div class="footer-container" style=" margin-top: 10%; ">
+        <div class="footer-container">
             <!-- Logo Column -->
             <div class="footer-column">
                 <img src="https://www.sensedefence.com/wp-content/uploads/2024/01/main-logo-TM-v2.svg" alt="Sense Defence" class="footer-logo">
@@ -246,7 +164,7 @@
                     Delivering Mission-Critical Application Protection for Global Industries
                 </p>
                 <p class="footer-copyright">
-                    © 2025 Sense Defence AI. All Rights Reserved
+                    © 2024 Sense Defence AI. All Rights Reserved
                 </p>
                 <div class="footer-badges">
                     <img src="https://www.sensedefence.com/wp-content/uploads/2024/01/35ddeeb9-b102-42e4-bd92-93d425d6465d-150x150.png" alt="Award" class="footer-badge">
@@ -259,50 +177,50 @@
                     <img src="https://www.sensedefence.com/wp-content/uploads/2024/01/f834a55b-21fc-4d2e-b96b-830486012029-150x150.png" alt="Award" class="footer-badge">
                 </div>
             </div>
-
+    
             <!-- Company Column -->
             <div class="footer-column">
                 <h3 class="footer-title">Company</h3>
                 <div class="footer-links">
-                    <a href="https://www.sensedefence.com/about-us/" class="footer-link">Who are we</a>
-                    <a href="https://www.sensedefence.com/why-sense-defence-ai/" class="footer-link">Why Sense Defence</a>
-                    <a href="https://resources.sensedefence.com/articles" class="footer-link">Sense Defence Blog</a>
+                    <a href="#" class="footer-link">Who are we</a>
+                    <a href="#" class="footer-link">Why Sense Defence</a>
+                    <a href="#" class="footer-link">Sense Defence Blog</a>
                 </div>
             </div>
-
+    
             <!-- Product Column -->
             <div class="footer-column">
                 <h3 class="footer-title">Product</h3>
                 <div class="footer-links">
-                    <a href="https://www.sensedefence.com/comprehensive-web-application-protection-platform/" class="footer-link">CWAPP</a>
-                    <a href="https://www.sensedefence.com/next-gen-waf/" class="footer-link">Next-Gen Cloud WAF</a>
-                    <a href="https://www.sensedefence.com/hybrid-waf/" class="footer-link">Hybrid WAF</a>
-                    <a href="https://www.sensedefence.com/ddos-protection/" class="footer-link">DDoS Protection</a>
-                    <a href="https://www.sensedefence.com/bot-protection/" class="footer-link">Bot Protection</a>
-                    <a href="https://www.sensedefence.com/advanced-firewall/" class="footer-link">Advanced Firewall</a>
-                    <a href="https://www.sensedefence.com/advanced-rate-limiting/" class="footer-link">Advanced Rate Limiting</a>
+                    <a href="#" class="footer-link">CWAPP</a>
+                    <a href="#" class="footer-link">Next-Gen Cloud WAF</a>
+                    <a href="#" class="footer-link">Hybrid WAF</a>
+                    <a href="#" class="footer-link">DDoS Protection</a>
+                    <a href="#" class="footer-link">Bot Protection</a>
+                    <a href="#" class="footer-link">Advanced Firewall</a>
+                    <a href="#" class="footer-link">Advanced Rate Limiting</a>
                 </div>
             </div>
-
+    
             <!-- Resources Column -->
             <div class="footer-column">
                 <h3 class="footer-title">Resources</h3>
                 <div class="footer-links">
-                    <a href="https://support.sensedefence.com/" class="footer-link">Help Center</a>
-                    <a href="https://resources.sensedefence.com/white-papers" class="footer-link">White Papers</a>
-                    <a href="https://resources.sensedefence.com/case-study" class="footer-link">Case Studies</a>
-                    <a href="https://resources.sensedefence.com/learning-center" class="footer-link">Learning Center</a>
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">White Papers</a>
+                    <a href="#" class="footer-link">Case Studies</a>
+                    <a href="#" class="footer-link">Learning Center</a>
                 </div>
             </div>
-
+    
             <!-- Support Column -->
             <div class="footer-column">
                 <h3 class="footer-title">Support</h3>
                 <div class="footer-links">
-                    <a href="https://support.sensedefence.com/" class="footer-link">Support Center</a>
-                    <a href="https://status.sensedefence.com/" class="footer-link">Service Status</a>
-                    <a href="https://apidocs.sensedefence.com/" class="footer-link">API Documentation</a>
-                    <a href="https://www.sensedefence.com/contact" class="footer-link">Contact us</a>
+                    <a href="#" class="footer-link">Support Center</a>
+                    <a href="#" class="footer-link">Service Status</a>
+                    <a href="#" class="footer-link">API Documentation</a>
+                    <a href="#" class="footer-link">Contact us</a>
                 </div>
             </div>
         </div>
@@ -342,9 +260,16 @@
                     <div class="trend-section-title">MALWARE TYPE TRENDS</div>
                     <div class="trend-subtitle">% of affected organizations</div>
                 </div>
-
+                
                 <div id="malware-trends">
                     <!-- Malware trend items will be dynamically added here -->
+                </div>
+                <div class="attack-feed-container">
+                    <div class="attack feed">
+                        <label class="attack-ball"></label>
+                        <label class="attack-ball"></label>
+                        <label class="attack-ball"></label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -352,14 +277,14 @@
 </body>
 <script>
    const attackColors = {
-        'scanners': 'rgb(121, 126, 252)',
+        'scanners': 'rgb(122, 123, 252)',
         'ddosAttackers': 'rgb(255, 222, 130)',
         'webAttackers': 'rgb(214, 90, 107)',
-        'intruders': 'rgb(127, 190, 245)',
-        'anonymizers': 'rgb(144, 69, 230)',
+        'intruders': 'rgb(121, 190, 245)',
+        'anonymizers': 'rgb(143, 69, 230)',
         'default': 'orange'
     };
-    var timeIds = [];
+    const timeIds = [];
     const width = window.innerWidth;
     const height = window.innerHeight;
     let trendChartInstance;
@@ -369,7 +294,9 @@
         .attr("height", height)
 
     const projection = d3.geoMercator()
-        .translate([width / 2.4, height / 1.9]);
+        .scale(Math.min(width / 1920, height / 1080) * 180)
+        .translate([width / 2.4, height / 1.5]);
+        
   
     const path = d3.geoPath().projection(projection);
     const attackFeed = document.getElementById("attack-feed");
@@ -378,8 +305,6 @@
     const defs = svg.append("defs");
     const filter = defs.append("filter")
         .attr("id", "glow")
-        .attr("x", "-50%")
-        .attr("y", "-50%")
         .attr("width", "200%")
         .attr("height", "200%");
 
@@ -454,31 +379,7 @@
     }).catch(error => {
         console.error("Error loading map data:", error);
     });
-    // ✅ Set dynamic margin after loading
-    window.addEventListener('load', () => {
-        const navHeight = document.querySelector('nav').offsetHeight;
-        document.getElementById('map-container').style.marginTop = `${navHeight}px`;
-    });
-
-    // ✅ Handle window resize events
-    window.addEventListener("resize", () => {
-        const newWidth = window.innerWidth;
-        const newHeight = window.innerHeight;
-
-        svg.attr("width", newWidth).attr("height", newHeight);
-
-        projection
-            .scale(Math.min(newWidth / 1920, newHeight / 1080) * 180)
-            .translate([newWidth / 2.4, newHeight / 1.5]);
-
-        svg.selectAll("path").attr("d", path);
-    });
-
-    // ✅ Close the trend panel
-    function closeTrendPanel() {
-        trendPanel.style.display = "none";
-    }
-
+    
     // ✅ WebSocket for Real-Time Cyber Attacks
     const socket = new WebSocket("ws://localhost:3000");
 
@@ -495,8 +396,10 @@
     socket.onclose = function() {
         console.log("WebSocket Connection Closed");
     };
-
+    
     socket.onmessage = function(event) {
+        if (!isPageActive)
+            return;
         try {
             const response = JSON.parse(event.data);
             response.forEach((item, index) => {
@@ -505,11 +408,11 @@
                     item.forEach((threat, idx) => {
                         let id = setTimeout(()=>{
                             addAttack(threat.sourceCountry, threat.destinationCountry, threat.type);
-                            idx % 5 == 0 && addAttackEntry(threat.sourceCountry, threat.destinationCountry, threat.type, threat.attackTime);
+                            addAttackEntry(threat.sourceCountry, threat.destinationCountry, threat.type, threat.attackTime);
                         }, idx * 100)
                         timeIds.push(id)
                     })
-                }, index * 1000);
+                }, index * 2000);
             });
         } catch (error) {
             console.error("Error processing WebSocket message:", error);
@@ -541,10 +444,8 @@
         return `${hours}:${minutes}:${seconds}`;
     }
 
-
+    
     function addAttackEntry(sourceCountry,destinationCountry, attackType, attackTime) {
-        if (!isPageActive)
-            return;
         const entry = document.createElement("div");
         entry.style.lineHeight = 1.1;
         entry.className = "attack-entry";
@@ -555,21 +456,19 @@
                 <span>${formatTime(attackTime)} ${getCountryName(sourceCountry)} → ${getCountryName(destinationCountry)}</span>
             </div>
         `;
-
+        
         attackFeed.prepend(entry);
         if (attackFeed.childNodes.length > 5) {
             attackFeed.removeChild(attackFeed.lastChild);
         }
     }
-
+     
     // ✅ Function to Add Attack Arcs (Cyber Attacks)
     function addAttack(sourceCountry, targetCountry, attackType) {
-        if (!isPageActive)
-            return;
         // Get the country path element by matching the country code
         const sourcePath = svg.select(`path[data-country="${sourceCountry}"]`).node();
         const targetPath = svg.select(`path[data-country="${targetCountry}"]`).node();
-
+        
         if (!sourcePath || !targetPath) {
             return;
         }
@@ -579,21 +478,18 @@
             const bounds = pathNode.getBBox();
             let point;
             let isInside = false;
-
+            
             while (!isInside) {
                 // Generate random point within the bounding box
                 const x = bounds.x + Math.random() * bounds.width;
                 const y = bounds.y + Math.random() * bounds.height;
-
+                
                 // Convert screen coordinates back to geographic coordinates
                 point = projection.invert([x, y]);
-
-                // Check if point is inside the country path
-                if (d3.geoContains(pathNode.__data__, point)) {
-                    isInside = true;
-                }
+                
+                
             }
-
+            
             return projection(point);
         }
 
@@ -601,47 +497,12 @@
         const targetCoords = getRandomPointInCountry(targetPath);
         const midPoint = [(sourceCoords[0] + targetCoords[0]) / 2, (sourceCoords[1] + targetCoords[1]) / 2 - 50];
         points = [sourceCoords, midPoint, targetCoords];
+        
 
-        const lineColor = attackColors[attackType] || attackColors.default;
-
-        // Add source ball (red)
-        const sourceBall = svg.append("circle")
-            .attr("cx", sourceCoords[0])
-            .attr("cy", sourceCoords[1])
-            .attr("r", 3)
-            .attr("fill", "#ff4444")
-            .attr("filter", "url(#glow)")
-            .attr("opacity", 0)
-            .transition()
-            .duration(200)
-            .attr("opacity", 1)
-            .transition()
-            .delay(500)
-            .duration(200)
-            .attr("opacity", 0)
-            .remove();
-
-        // Add target ball (blue)
-        const targetBall = svg.append("circle")
-            .attr("cx", targetCoords[0])
-            .attr("cy", targetCoords[1])
-            .attr("r", 3)
-            .attr("fill", "#4444ff")
-            .attr("filter", "url(#glow)")
-            .attr("opacity", 0)
-            .transition()
-            .duration(200)
-            .delay(300) // Delay the target ball appearance
-            .attr("opacity", 1)
-            .transition()
-            .delay(500)
-            .duration(200)
-            .attr("opacity", 0)
-            .remove();
-
+        
         const arc = d3.line().curve(d3.curveBasis);
-
-        // Add the attack line
+        const lineColor = attackColors[attackType] || attackColors.default;
+        // Add source country name
         const path = svg.append("path")
                 .datum(points)
                 .attr("d", arc)
@@ -649,7 +510,7 @@
                 .attr("stroke", lineColor)
                 .attr("stroke-width", 1.5)
                 .attr("opacity", 0.7);
-
+        
         const totalLength = path.node().getTotalLength();
 
         path
@@ -658,14 +519,15 @@
             .transition()
             .duration(500)
             .ease(d3.easeLinear)
+            .attr("solid", 0)
             .attr("stroke-dashoffset", 0)
             .transition()
-            .duration(500)
+            .duration(500)  // Longer duration for fade out
             .attr("opacity", 0)
-            .attr("stroke-dashoffset", -totalLength)
+            .attr("stroke-dashoffset", -totalLength)  // Changed to negative to fade from end to start
             .remove();
 
-        if (!document.body.classList.contains('loaded'))
+        if (!document.body.classList.contains('loaded')) 
             document.body.classList.add("loaded");
     }
 
@@ -723,7 +585,7 @@
         const trendChartHeight = maxHeight * 0.2;
         const descHeight = document.getElementsByClassName("trend-container")[0].offsetHeight;
         const availableHeight = maxHeight - headerHeight - trendChartHeight - descHeight;
-        const numberOfCharts = 5;
+        const numberOfCharts = 5; 
         const chartHeight = Math.floor((availableHeight / numberOfCharts) - spacing);
 
         // Set height for main trend chart
@@ -740,11 +602,11 @@
     function drawTrendChart(trendData) {
         const panelHeight = trendPanel.clientHeight;
         const trendChartHeight = panelHeight * 0.2;
-
+        
         let trendContainer = document.getElementById("trend-chart-container");
         trendContainer.innerHTML = "";
         trendContainer.innerHTML = `<canvas id="trend-chart" style="height: ${trendChartHeight}px"></canvas>`;
-
+        
         if (trendChartInstance) {
             trendChartInstance.destroy();
         }
@@ -841,7 +703,7 @@
         drawAttackIndustry()
     }
 
-
+    
     // Adjust malware charts to dynamically fit in the panel
     function drawMalwareTrends(malwareData) {
         const malwareContainer = document.getElementById("malware-trends");
@@ -852,7 +714,7 @@
         const headerHeight = document.getElementById("trend-country-name").offsetHeight;
         const descHeight = document.getElementsByClassName("trend-container")[0].offsetHeight;
         const availableHeight = panelHeight - trendChartHeight - headerHeight - descHeight;
-
+        
         // Calculate individual chart height
         const totalTypes = Object.keys(malwareData.attacksByType).length;
         const individualChartHeight = availableHeight / totalTypes;
@@ -870,7 +732,7 @@
 
             // malwareContainer.innerHTML += `<div class="malware-trend" style="height:${individualChartHeight}"><canvas id="${type}-chart" style="height: ${individualChartHeight - 20}px"></canvas></div>`;
             const ctx = document.getElementById(`${type}-chart`).getContext("2d");
-
+            
             new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -929,7 +791,7 @@
         if (isDragging) {
             let newX = e.clientX - offsetX;
             let newY = e.clientY - offsetY;
-
+            
             // Prevent the panel from going out of bounds
             const maxX = window.innerWidth - trendPanel.offsetWidth - 10; // 10px padding
             const maxY = window.innerHeight - trendPanel.offsetHeight - 10; // 10px padding
@@ -961,6 +823,27 @@
     function resizeMap() {
         const newWidth = window.innerWidth;
         const newHeight = window.innerHeight;
+        
+        // Update SVG dimensions
+        svg.attr("width", newWidth)
+           .attr("height", newHeight);
+        
+        // Calculate new scale based on window dimensions
+        const scale = Math.min(newWidth / 1920, newHeight / 1080) * 180;
+        
+        // Update projection with dynamic scaling
+        projection
+            .scale(scale)
+            .translate([newWidth / 2.4, newHeight / 1.5]);
+        
+        // Update all paths with new projection
+        svg.selectAll("path")
+           .attr("d", path);
+    }
+
+    function drawMap() {
+        const newWidth = window.innerWidth;
+        const newHeight = window.innerHeight;
 
         // Update SVG dimensions
         svg.attr("width", newWidth)
@@ -969,20 +852,17 @@
         // Calculate new scale based on window dimensions
         const scale = Math.min(newWidth / 1920, newHeight / 1080) * 180;
 
-        // Update projection with dynamic scaling
-        projection
-            .scale(scale)
-            .translate([newWidth / 2.4, newHeight / 1.5]);
-
         // Update all paths with new projection
         svg.selectAll("path")
            .attr("d", path);
     }
 
+
     // Update the window resize event listener to include map resizing
     window.addEventListener("resize", () => {
         adjustPanelSize();
         resizeMap();
+        drawMap();
     });
 
 </script>
