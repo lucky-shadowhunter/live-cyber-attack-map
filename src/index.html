@@ -659,7 +659,7 @@
             .transition()
             .duration(500)
             .ease(d3.easeLinear)
-            .attr("stroke-dashoffset", 0)
+            .attr("solid", 0)
             .transition()
             .duration(500)
             .attr("opacity", 0)
@@ -980,10 +980,28 @@
            .attr("d", path);
     }
 
+    function drawMap() {
+        const newWidth = window.innerWidth;
+        const newHeight = window.innerHeight;
+
+        // Update SVG dimensions
+        svg.attr("width", newWidth)
+           .attr("height", newHeight);
+
+        // Calculate new scale based on window dimensions
+        const scale = Math.min(newWidth / 1920, newHeight / 1080) * 180;
+
+        // Update all paths with new projection
+        svg.selectAll("path")
+           .attr("d", path);
+    }
+
+
     // Update the window resize event listener to include map resizing
     window.addEventListener("resize", () => {
         adjustPanelSize();
         resizeMap();
+        drawMap();
     });
 
 </script>
